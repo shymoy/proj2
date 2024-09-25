@@ -11,9 +11,9 @@ public class RoomsGenerator {
     public void generateRooms(TETile[][] world, Seed seed) {
         Random rand = seed.getRandom();
 
-        int roomNum = RandomUtils.uniform(rand,20);
+//        int roomNum = RandomUtils.uniform(rand,20);
 
-        for (int i = 0; i < roomNum; i++) {
+        for (int i = 0; i < 1; i++) {
             //room position and size
             Room room = generateRoom(world, seed);
             rooms.add(room);
@@ -23,8 +23,8 @@ public class RoomsGenerator {
     private Room generateRoom(TETile[][] world, Seed seed) {
         //wall on the floor
         Random rand = seed.getRandom();
-        int width = RandomUtils.uniform(rand, world.length/10);
-        int height = RandomUtils.uniform(rand, world.length/10);
+        int width = RandomUtils.uniform(rand, world.length/7);
+        int height = RandomUtils.uniform(rand, world.length/7);
         int xxPosiiton = RandomUtils.uniform(rand, 1,world.length - width - 1);
         int yyPosiiton = RandomUtils.uniform(rand,1, world[0].length - height - 1);
         return new Room(width, height, xxPosiiton, yyPosiiton);
