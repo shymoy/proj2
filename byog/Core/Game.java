@@ -2,7 +2,6 @@ package byog.Core;
 
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
-import byog.Core.Seed;
 
 public class Game {
     TERenderer ter = new TERenderer();
@@ -36,6 +35,13 @@ public class Game {
 
         TETile[][] finalWorldFrame = null;
 
+        Seed seed = getSeed(input);
+
+        WorldGenerator.generateWorld(finalWorldFrame,seed);
+        return finalWorldFrame;
+    }
+
+    private Seed getSeed(String input) {
         boolean newGame = false;
         boolean seedCompelete = false;
         //restore the seed as string
@@ -51,7 +57,6 @@ public class Game {
                 seedCompelete = true;
             } else { seedBuild.append(c); }
         }
-
-        return finalWorldFrame;
+        return seed;
     }
 }

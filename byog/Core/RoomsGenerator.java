@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RoomsGenerator {
-    public static void generateRooms(TETile[][] world, Seed seed) {
+    private ArrayList<Room> rooms = new ArrayList<>();
+
+    public void generateRooms(TETile[][] world, Seed seed) {
         Random rand = seed.getRandom();
 
         int roomNum = RandomUtils.uniform(rand,20);
-
-        ArrayList<Room> rooms = new ArrayList<>();
 
         for (int i = 0; i < roomNum; i++) {
             //room position and size
@@ -20,14 +20,17 @@ public class RoomsGenerator {
         }
     }
 
-    private static Room generateRoom(TETile[][] world, Seed seed) {
-        //wall on the position
+    private Room generateRoom(TETile[][] world, Seed seed) {
+        //wall on the floor
         Random rand = seed.getRandom();
         int width = RandomUtils.uniform(rand, world.length/10);
         int height = RandomUtils.uniform(rand, world.length/10);
-        int xxPosiiton = RandomUtils.uniform(rand, world.length - width);
-        int yyPosiiton = RandomUtils.uniform(rand, world[0].length - height);
-        Room room = new Room(width, height, xxPosiiton, yyPosiiton);
-        return room;
+        int xxPosiiton = RandomUtils.uniform(rand, 1,world.length - width - 1);
+        int yyPosiiton = RandomUtils.uniform(rand,1, world[0].length - height - 1);
+        return new Room(width, height, xxPosiiton, yyPosiiton);
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
     }
 }
