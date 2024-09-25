@@ -1,13 +1,23 @@
 package byog.Core;
 
-public class Seed {
-    private static long seed = 1;
+import java.util.Random;
 
-    public static long getSeed() {
+public class Seed {
+    private long seed;
+
+    public Seed() {
+        this.seed = 1;
+    }
+
+    public long getSeed() {
         return seed;
     }
 
-    public static void setSeed(long n) {
+    public void setSeed(long n) {
         seed = n;
+    }
+
+    public Random getRandom() {
+        return new Random(seed);
     }
 }

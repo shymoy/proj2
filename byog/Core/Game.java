@@ -40,17 +40,18 @@ public class Game {
         boolean seedCompelete = false;
         //restore the seed as string
         StringBuilder seedBuild = new StringBuilder();
+        Seed seed = new Seed();
 
         for (Character c : input.toCharArray()) {
             if (c.equals('n') && !newGame) {
                 newGame = true;
             } else if (c.equals('s') && !seedCompelete && newGame) {
                 //set the seed
-                Seed.setSeed(Long.parseLong(seedBuild.toString()));
+                seed.setSeed(Long.parseLong(seedBuild.toString()));
                 seedCompelete = true;
             } else { seedBuild.append(c); }
         }
-        finalWorldFrame = worldGenerator();
+
         return finalWorldFrame;
     }
 }
