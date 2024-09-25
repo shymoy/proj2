@@ -3,18 +3,19 @@ package byog.Core;
 import byog.TileEngine.*;
 
 import java.util.List;
+import java.util.Random;
 
 
 public class WorldGenerator {
     //receive a TETil[][] and draw it
-    public static void generateWorld(TETile[][] world, Seed seed) {
+    public static void generateWorld(TETile[][] world, Random rand) {
         //random num of rooms
-        generateRooms(world, seed);
+        generateRooms(world, rand);
     }
 
-    private static void generateRooms(TETile[][] world, Seed seed) {
+    private static void generateRooms(TETile[][] world, Random rand) {
         RoomsGenerator roomsGenerator = new RoomsGenerator();
-        roomsGenerator.generateRooms(world, seed);
+        roomsGenerator.generateRooms(world, rand);
         List<Room> roomList = roomsGenerator.getRooms();
         DrawRooms.drawRooms(world, roomList);
 

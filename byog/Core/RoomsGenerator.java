@@ -8,23 +8,20 @@ import java.util.Random;
 public class RoomsGenerator {
     private ArrayList<Room> rooms = new ArrayList<>();
 
-    public void generateRooms(TETile[][] world, Seed seed) {
-        Random rand = seed.getRandom();
+    public void generateRooms(TETile[][] world, Random rand) {
+        int roomNum = RandomUtils.uniform(rand,10);
 
-//        int roomNum = RandomUtils.uniform(rand,20);
-
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < roomNum; i++) {
             //room position and size
-            Room room = generateRoom(world, seed);
+            Room room = generateRoom(world, rand);
             rooms.add(room);
         }
     }
 
-    private Room generateRoom(TETile[][] world, Seed seed) {
+    private Room generateRoom(TETile[][] world, Random rand) {
         //wall on the floor
-        Random rand = seed.getRandom();
-        int width = RandomUtils.uniform(rand, world.length/7);
-        int height = RandomUtils.uniform(rand, world.length/7);
+        int width = RandomUtils.uniform(rand, 5, 10);
+        int height = RandomUtils.uniform(rand, 3, 7);
         int xxPosiiton = RandomUtils.uniform(rand, 1,world.length - width - 1);
         int yyPosiiton = RandomUtils.uniform(rand,1, world[0].length - height - 1);
         return new Room(width, height, xxPosiiton, yyPosiiton);

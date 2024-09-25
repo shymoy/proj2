@@ -4,6 +4,8 @@ import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
+import java.util.Random;
+
 public class Game {
     TERenderer ter = new TERenderer();
     /* Feel free to change the width and height. */
@@ -39,7 +41,9 @@ public class Game {
 
         Seed seed = getSeed( input.toLowerCase());
 
-        WorldGenerator.generateWorld(finalWorldFrame,seed);
+        Random rand = seed.getRandom();
+
+        WorldGenerator.generateWorld(finalWorldFrame, rand);
         return finalWorldFrame;
     }
 
