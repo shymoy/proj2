@@ -37,11 +37,10 @@ public class HallwayChooser {
     }
 
     private Room getConnectedRoomHelper() {
-        return connectedRooms.get(rand.nextInt(rooms.size()));
+        return connectedRooms.get(rand.nextInt(connectedRooms.size()));
     }
 
     public boolean isAllConnected() {
         return connectedRooms.size() == rooms.size();
     }
-
 }

@@ -24,19 +24,17 @@ public class DrawHallways {
 
     private void drawHallwayHelper(HallwayChooser hallwayChooser) {
         //connect two rooms' center
+        System.out.println(TETile.toString(world));
         Room room1 = hallwayChooser.getNotConnectedRoom();
         Room room2 = hallwayChooser.getNotConnectedRoom();
-        while (room2.equals(room1)) {
-            room2 = hallwayChooser.getNotConnectedRoom();
-        }
-
         new Connector(world, room1, room2, rand);
-
+        System.out.println(TETile.toString(world));
 
         while (!hallwayChooser.isAllConnected()) {
             room1 = hallwayChooser.getNotConnectedRoom();
             room2 = hallwayChooser.getConnectedRoom();
             new Connector(world, room1, room2, rand);
+            System.out.println(TETile.toString(world));
         }
     }
 }
