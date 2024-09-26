@@ -26,6 +26,9 @@ public class DrawHallways {
         //connect two rooms' center
         Room room1 = hallwayChooser.getNotConnectedRoom();
         Room room2 = hallwayChooser.getNotConnectedRoom();
+        while (room2.equals(room1)) {
+            room2 = hallwayChooser.getNotConnectedRoom();
+        }
 
         new Connector(world, room1, room2, rand);
 

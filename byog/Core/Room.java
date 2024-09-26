@@ -13,8 +13,8 @@ public class Room {
         this.height = height;
         this.xxPosition = xxPosition;
         this.yyPosition = yyPosition;
-        this.xxCenter = xxPosition + width / 2;
-        this.yyCenter = yyPosition + height / 2;
+        this.xxCenter = (xxPosition + width) / 2;
+        this.yyCenter = (yyPosition + height) / 2;
     }
 
     public int getXxCenter() {

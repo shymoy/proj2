@@ -18,7 +18,7 @@ public class BasicDraw {
         int xxEnd = width > 0 ? xxPosition + width : xxPosition;
         int yyEnd = height > 0 ? yyPosition + height: yyPosition;
         drawHallwayFloor(world, xxStart, yyStart, xxEnd, yyEnd);
-        drawHallwayWall(world, xxStart, yyStart, xxEnd, yyEnd);
+        drawHallwayWall(world, xxStart - 1, yyStart - 1, xxEnd + 1, yyEnd + 1);
     }
 
     private static void drawHallwayFloor(TETile[][] world, int xxStart, int yyStart, int xxEnd, int yyEnd) {
@@ -29,9 +29,10 @@ public class BasicDraw {
     private static void drawHallwayWall(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
         drawTile(world, xxPosition, yyPosition, width, height, Tileset.WALL);
     }
+
     private static void drawTile(TETile[][] world, int xxStart, int yyStart, int xxEnd, int yyEnd, TETile tile) {
-        for (int i = xxStart; i < xxEnd; i++) {
-            for (int j = yyStart; j < yyEnd; j++) {
+        for (int i = xxStart; i < xxEnd && i < world.length; i++) {
+            for (int j = yyStart; j < yyEnd && j < world[0].length; j++) {
                 if (world[i][j] != Tileset.FLOOR) {
                     world[i][j] = tile;
                 }

@@ -11,7 +11,7 @@ public class RoomsGenerator {
     public void generateRooms(TETile[][] world, Random rand) {
         int roomNum = RandomUtils.uniform(rand,10);
 
-        for (int i = 0; i < roomNum; i++) {
+        for (int i = 0; i < 2; i++) {
             //room position and size
             Room room = generateRoom(world, rand);
 

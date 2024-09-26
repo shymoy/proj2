@@ -27,8 +27,14 @@ public class Connector {
     }
 
     public void connect() {
-        xxConnection(xxCenterDiffer);
-        yyConnection(yyCenterDiffer);
+        int xxStep = -xxCenterDiffer;
+        int yyStep = -yyCenterDiffer;
+
+        xxConnection(xxStep);
+        xxStepped += xxStep;
+
+        yyConnection(yyStep);
+        yyStepped += yyStep;
     }
 
     private void xxConnection(int xxStep) {
