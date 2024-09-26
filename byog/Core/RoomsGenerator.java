@@ -14,7 +14,19 @@ public class RoomsGenerator {
         for (int i = 0; i < roomNum; i++) {
             //room position and size
             Room room = generateRoom(world, rand);
+
+            boolean isDuplicate = false;
+            for (Room origin : rooms) {
+                if (origin.equals(room)) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+            if (!isDuplicate) {
                 rooms.add(room);
+            } else {
+                i--;
+            }
         }
     }
 
