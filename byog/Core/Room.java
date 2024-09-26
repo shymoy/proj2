@@ -5,26 +5,13 @@ public class Room {
     private final int height;
     private final int xxPosition;
     private final int yyPosition;
-    private final int xxCenter;
-    private final int yyCenter;
 
     public Room (int width, int height, int xxPosition, int yyPosition) {
         this.width = width;
         this.height = height;
         this.xxPosition = xxPosition;
         this.yyPosition = yyPosition;
-        this.xxCenter = xxPosition + width / 2 ;
-        this.yyCenter = yyPosition + height / 2;
     }
-
-    public int getXxCenter() {
-        return xxCenter;
-    }
-
-    public int getYyCenter() {
-        return yyCenter;
-    }
-
     public int getWidth() {
         return width;
     }

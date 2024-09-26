@@ -27,7 +27,6 @@ public class HallwayChooser {
           while (connectedRooms.contains(room)) {
               room = rooms.get(rand.nextInt(rooms.size()));
           }
-          connectedRooms.add(room);
           return room;
         }
     }
@@ -42,5 +41,9 @@ public class HallwayChooser {
 
     public boolean isAllConnected() {
         return connectedRooms.size() == rooms.size();
+    }
+
+    public void connectRoom(Room room) {
+        connectedRooms.add(room);
     }
 }

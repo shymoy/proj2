@@ -16,8 +16,8 @@ public class Connector {
 
     public Connector(TETile[][] world, Room room1, Room room2, Random rand) {
         this.world = world;
-       xxCenterDiffer = room1.getXxCenter() - room2.getXxCenter();
-       yyCenterDiffer = room1.getYyCenter() - room2.getYyCenter();
+       xxCenterDiffer = room1.getXxPosition() - room2.getXxPosition();
+       yyCenterDiffer = room1.getYyPosition() - room2.getYyPosition();
        this.rand = rand;
        xxStepped = 0;
        yyStepped = 0;
