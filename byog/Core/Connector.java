@@ -27,16 +27,39 @@ public class Connector {
     }
 
     public void connect() {
-        int xxStep = -xxCenterDiffer;
-        int yyStep = -yyCenterDiffer;
+        while (xxStepped != -xxCenterDiffer || yyStepped != -yyCenterDiffer) {
+            int xxRemain = -xxCenterDiffer - xxStepped;
+            int yyRemain = -yyCenterDiffer - yyStepped;
+            if (yyStepped == -yyCenterDiffer) {
+                int xxStep = xxCenterDiffer > 0 ? RandomUtils.uniform(rand, xxRemain, 0) : RandomUtils.uniform(rand, 0, xxRemain) + 1;
 
-        xxConnection(xxStep);
-        xxStepped += xxStep;
+                xxConnection(xxStep);
+                xxStepped += xxStep;
+            } else if (xxStepped == -xxCenterDiffer) {
+                int yyStep = yyCenterDiffer > 0 ? RandomUtils.uniform(rand, yyRemain, 0)  : RandomUtils.uniform(rand, 0, yyRemain) + 1;
 
-        yyConnection(yyStep);
-        yyStepped += yyStep;
+                yyConnection(yyStepped);
+                yyStepped += yyStep;
+            } else {
+                int xxStep = xxCenterDiffer > 0 ? RandomUtils.uniform(rand, xxRemain, 0)  : RandomUtils.uniform(rand, 0, xxRemain) + 1;
+
+                int yyStep = yyCenterDiffer > 0 ? RandomUtils.uniform(rand, yyRemain, 0)  : RandomUtils.uniform(rand, 0, yyRemain) + 1 ;
+
+                randomConnection(xxStep, yyStep);
+            }
+        }
     }
 
+    private void randomConnection(int xxStep, int yyStep) {
+        int x = RandomUtils.uniform(rand, 2);
+        if (x == 0) {
+            xxConnection(xxStep);
+            xxStepped += xxStep;
+        }else if (x == 1) {
+            yyConnection(yyStep);
+            yyStepped += yyStep;
+        }
+    }
     private void xxConnection(int xxStep) {
         BasicDraw.drawHallway(world, room1.getXxPosition() + xxStepped, room1.getYyPosition() + yyStepped, xxStep, 1);
     }
