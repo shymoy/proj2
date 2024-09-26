@@ -11,7 +11,7 @@ public class WorldGenerator {
     public static void generateWorld(TETile[][] world, Random rand) {
         //random num of rooms
         generateRooms(world, rand);
-        generateHallways(world, rand);
+//        generateHallways(world, rand);
     }
 
     private static void generateRooms(TETile[][] world, Random rand) {
@@ -23,6 +23,6 @@ public class WorldGenerator {
 
     private static void generateHallways(TETile[][] world, Random rand) {
         List<Room> roomList = RoomsGenerator.getRooms();
-        DrawHallways(world, roomList, rand);
+//        DrawHallways(world, roomList, rand);
     }
 }

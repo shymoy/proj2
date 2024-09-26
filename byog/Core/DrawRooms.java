@@ -13,23 +13,15 @@ public class DrawRooms {
 
     private static void drawFloor(TETile[][] world, List<Room> rooms) {
         for (Room room : rooms) {
-            for (int i = room.getXxPosition(); i < room.getXxPosition() + room.getWidth(); i++) {
-                for (int j = room.getYyPositon(); j < room.getYyPositon() + room.getHeight(); j++) {
-                    world[i][j] = Tileset.FLOOR;
-                }
-            }
+            BasicDraw.drawFloor(world, room.getXxPosition(), room.getYyPositon(),
+                    room.getWidth(), room.getHeight());
         }
     }
 
     private static void drawWall(TETile[][] world, List<Room> rooms) {
         for (Room room : rooms) {
-            for (int i = room.getXxPosition() - 1; i < room.getXxPosition() + room.getWidth() + 1; i++) {
-                for (int j = room.getYyPositon() - 1; j < room.getYyPositon() + room.getHeight() + 1; j++) {
-                    if (world[i][j] != Tileset.FLOOR) {
-                        world[i][j] = Tileset.WALL;
-                    }
-                }
-            }
+            BasicDraw.drawWall(world, room.getXxPosition(), room.getYyPositon(),
+                    room.getWidth(), room.getHeight());
         }
     }
 }
