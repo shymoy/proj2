@@ -4,27 +4,36 @@ import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
 public class BasicDraw {
-    public static void drawFloor(TETile[][] world, int xxPosition, int yyPosition,int width, int height) {
-        drawFloorHelper(world, xxPosition, yyPosition, width, height);
+    public static void drawRoomFloor(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
+       drawTile(world, xxPosition, yyPosition, width + xxPosition, height + yyPosition, Tileset.FLOOR);
     }
 
-    private static void drawFloorHelper(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
-        for (int i = xxPosition; i < xxPosition + width; i++) {
-            for (int j = yyPosition; j < yyPosition + height; j++) {
-                world[i][j] = Tileset.FLOOR;
-            }
-        }
+    public static void drawRoomWall(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
+        drawTile(world, xxPosition - 1, yyPosition - 1, xxPosition + width + 1, yyPosition + height + 1,  Tileset.WALL);
     }
 
-    public static void drawWall(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
-        drawWallHelper(world, xxPosition, yyPosition, width, height);
+    public static void drawHallway(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
+        int xxStart = width > 0 ? xxPosition : xxPosition + width;
+        int yyStart = height > 0 ? yyPosition : yyPosition + height;
+        int xxEnd = width > 0 ? xxPosition + width : xxPosition;
+        int yyEnd = height > 0 ? yyPosition + height: yyPosition;
+        drawHallwayFloor(world, xxStart, yyStart, xxEnd, yyEnd);
+        drawHallwayWall(world, xxStart, yyStart, xxEnd, yyEnd);
     }
 
-    private static void drawWallHelper(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
-        for (int i = xxPosition - 1; i < xxPosition + width + 1; i++) {
-            for (int j = yyPosition - 1; j < yyPosition + height + 1; j++) {
+    private static void drawHallwayFloor(TETile[][] world, int xxStart, int yyStart, int xxEnd, int yyEnd) {
+
+        drawTile(world, xxStart, yyStart, xxEnd, yyEnd, Tileset.FLOOR);
+    }
+
+    private static void drawHallwayWall(TETile[][] world, int xxPosition, int yyPosition, int width, int height) {
+        drawTile(world, xxPosition, yyPosition, width, height, Tileset.WALL);
+    }
+    private static void drawTile(TETile[][] world, int xxStart, int yyStart, int xxEnd, int yyEnd, TETile tile) {
+        for (int i = xxStart; i < xxEnd; i++) {
+            for (int j = yyStart; j < yyEnd; j++) {
                 if (world[i][j] != Tileset.FLOOR) {
-                    world[i][j] = Tileset.WALL;
+                    world[i][j] = tile;
                 }
             }
         }

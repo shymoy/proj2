@@ -8,12 +8,12 @@ public class Room {
     private final int xxCenter;
     private final int yyCenter;
 
-    public Room (int width, int height, int xxPositon, int yyPosition) {
+    public Room (int width, int height, int xxPosition, int yyPosition) {
         this.width = width;
         this.height = height;
-        this.xxPosition = xxPositon;
+        this.xxPosition = xxPosition;
         this.yyPosition = yyPosition;
-        this.xxCenter = xxPositon + width / 2;
+        this.xxCenter = xxPosition + width / 2;
         this.yyCenter = yyPosition + height / 2;
     }
 
@@ -37,7 +37,7 @@ public class Room {
         return xxPosition;
     }
 
-    public int getYyPositon() {
+    public int getYyPosition() {
         return yyPosition;
     }
 
@@ -48,6 +48,6 @@ public class Room {
         Room room = (Room) o;
 
         return getXxPosition() == room.getXxPosition() &&
-                getYyPositon() == room.getYyPositon();
+                getYyPosition() == room.getYyPosition();
     }
 }

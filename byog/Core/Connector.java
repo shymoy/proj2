@@ -16,7 +16,7 @@ public class Connector {
 
     public Connector(TETile[][] world, Room room1, Room room2, Random rand) {
         this.world = world;
-       xxCenterDiffer = room1.getXxCenter() - room2.getYyCenter();
+       xxCenterDiffer = room1.getXxCenter() - room2.getXxCenter();
        yyCenterDiffer = room1.getYyCenter() - room2.getYyCenter();
        this.rand = rand;
        xxStepped = 0;
@@ -32,12 +32,10 @@ public class Connector {
     }
 
     private void xxConnection(int xxStep) {
-        BasicDraw.drawFloor(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, xxStep, 1);
-        BasicDraw.drawWall(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, xxStep, 1);
+        BasicDraw.drawHallway(world, room1.getXxPosition() + xxStepped, room1.getYyPosition() + yyStepped, xxStep, 1);
     }
 
     private void yyConnection(int yyStep) {
-        BasicDraw.drawFloor(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, 1, yyStep);
-        BasicDraw.drawWall(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, 1, yyStep);
+        BasicDraw.drawHallway(world, room1.getXxPosition() + xxStepped, room1.getYyPosition() + yyStepped, 1, yyStep);
     }
 }
