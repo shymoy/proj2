@@ -30,10 +30,8 @@ public class DrawHallways {
         while (room1.equals(room2)) {
             room2 = hallwayChooser.getNotConnectedRoom();
         }
-        System.out.println(TETile.toString(world));
 
         new Connector(world, room1, room2, rand);
-        System.out.println(TETile.toString(world));
 
         hallwayChooser.connectRoom(room1);
         hallwayChooser.connectRoom(room2);

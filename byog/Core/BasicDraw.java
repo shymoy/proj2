@@ -31,8 +31,8 @@ public class BasicDraw {
     }
 
     private static void drawTile(TETile[][] world, int xxStart, int yyStart, int xxEnd, int yyEnd, TETile tile) {
-        for (int i = xxStart; i < xxEnd && i < world.length; i++) {
-            for (int j = yyStart; j < yyEnd && j < world[0].length; j++) {
+        for (int i = xxStart; i < xxEnd && i < world.length && i > -1; i++) {
+            for (int j = yyStart; j < yyEnd && j < world[0].length && j > -1; j++) {
                 if (world[i][j] != Tileset.FLOOR) {
                     world[i][j] = tile;
                 }

@@ -9,9 +9,9 @@ public class RoomsGenerator {
     private static ArrayList<Room> rooms = new ArrayList<>();
 
     public void generateRooms(TETile[][] world, Random rand) {
-        int roomNum = RandomUtils.uniform(rand,2,20);
+        int roomNum = RandomUtils.uniform(rand,2,10);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < roomNum; i++) {
             //room position and size
             Room room = generateRoom(world, rand);
 
