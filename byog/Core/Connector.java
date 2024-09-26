@@ -5,6 +5,8 @@ import byog.TileEngine.TETile;
 import java.util.Random;
 
 public class Connector {
+    Room room1;
+    Room room2;
     int xxCenterDiffer;
     int yyCenterDiffer;
     int xxStepped;
@@ -19,15 +21,23 @@ public class Connector {
        this.rand = rand;
        xxStepped = 0;
        yyStepped = 0;
+       this.room1 = room1;
+       this.room2 = room2;
        connect();
     }
 
     public void connect() {
-        connection(xxCenterDiffer, yyCenterDiffer);
+        xxConnection(xxCenterDiffer);
+        yyConnection(yyCenterDiffer);
     }
 
-    private void connection(int xxStep, int yyStep) {
-        BasicDraw.drawFloor(world, xxStep, yyStep, xxStep, yyStep);
-        BasicDraw.drawWall(world, xxStep, yyStep, xxStep, yyStep);
+    private void xxConnection(int xxStep) {
+        BasicDraw.drawFloor(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, xxStep, 1);
+        BasicDraw.drawWall(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, xxStep, 1);
+    }
+
+    private void yyConnection(int yyStep) {
+        BasicDraw.drawFloor(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, 1, yyStep);
+        BasicDraw.drawWall(world, room1.getXxPosition() + xxStepped, room1.getYyPositon() + yyStepped, 1, yyStep);
     }
 }
