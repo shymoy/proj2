@@ -1,12 +1,11 @@
 package byog.Core;
 
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class HallwayChooser {
-    private List<Room> connectedRooms;
+    private final List<Room> connectedRooms;
     private final List<Room> rooms;
     private final Random rand;
 
@@ -22,16 +21,15 @@ public class HallwayChooser {
 
     private Room getNotConnectedRoomHelper() {
         Room room = rooms.get(rand.nextInt(rooms.size()));
-       if (connectedRooms == null) {
-           return room;
-       } else if (isAllConnected()) {
-            return null;
-       } else {
-         while (connectedRooms.contains(room)) {
-             room = rooms.get(rand.nextInt(rooms.size()));
-         }
-         return room;
-       }
+        if (isAllConnected()) {
+             return null;
+        } else {
+          while (connectedRooms.contains(room)) {
+              room = rooms.get(rand.nextInt(rooms.size()));
+          }
+          connectedRooms.add(room);
+          return room;
+        }
     }
 
     public Room getConnectedRoom() {
@@ -39,12 +37,7 @@ public class HallwayChooser {
     }
 
     private Room getConnectedRoomHelper() {
-        Room room = connectedRooms.get(rand.nextInt(rooms.size()));
-        if (connectedRooms == null) {
-            return null;
-        } else {
-            return room;
-        }
+        return connectedRooms.get(rand.nextInt(rooms.size()));
     }
 
     public boolean isAllConnected() {
